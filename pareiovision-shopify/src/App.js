@@ -125,7 +125,7 @@ class App extends Component {
             <a
               onMouseOver={this.handleMouseOver}
               onMouseOut={this.handleMouseOut}
-              to="/"
+              href='http://www.pareiovision.com'
               className="link dim logo-image mh4"
             >
               <img

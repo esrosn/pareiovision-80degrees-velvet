@@ -11,8 +11,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Deploy to www subdomain
+      - name: Deploy Landing to www subdomain
         run: cd isaac-lewis-80degrees && npm install && npm run build && aws s3 sync build/ s3://${{ secrets.WWW_LANDING_AWS_S3_BUCKET }} --delete
-      - name: Deploy to domain
+      - name: Deploy Landing to domain
         run: cd isaac-lewis-80degrees && aws s3 sync build/ s3://${{ secrets.DOMAIN_LANDING_AWS_S3_BUCKET }} --delete
+      - name: Deploy Shop to www subdomain
+        run: cd pareiovision-shopify && npm install && npm run build && aws s3 sync build/ s3://${{ secrets.WWW_SHOP_AWS_S3_BUCKET }} --delete
+      - name: Deploy Shop to subdomain
+        run: cd pareiovision-shopify && aws s3 sync build/ s3://${{ secrets.DOMAIN_SHOP_AWS_S3_BUCKET }} --delete
 
