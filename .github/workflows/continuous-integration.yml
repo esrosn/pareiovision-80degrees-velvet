@@ -13,7 +13,7 @@ jobs:
           aws-region: us-east-1
       - name: Build production landing page -- www
       - run: cd isaac-lewis-80degrees && npm install && npm run-script build
-     - name: Deploy static site to S3 bucket -- www
+      - name: Deploy static site to S3 bucket -- www
       - run: cd issac-lewis-80degrees && aws s3 sync build/ s3://${{ WWW_LANDING_AWS_S3_BUCKET }} --delete
 
 
