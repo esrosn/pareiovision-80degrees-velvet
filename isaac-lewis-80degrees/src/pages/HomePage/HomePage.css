@@ -1,0 +1,52 @@
+.image {
+    height: auto;
+}
+.cover-image {
+    max-width: 40vw;
+    min-width: 200px;
+}
+
+
+.grid-container--content {
+    width: 100%;
+
+
+}
+
+
+@media screen and (max-width: 60em)  {
+    .logo-image img:nth-of-type(2), .logo-image img:nth-of-type(3) {
+        display: none;
+    }
+}
+
+
+
+@media screen and (min-width: 60em) {
+    .logo {
+        width: 15%;
+    }
+    .grid-container--content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 2.5fr;
+        justify-content: flex-end;
+        align-items: center;
+
+
+    }
+    .logo-image img {
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 0.5s, box-shadow 0.5s;
+
+
+    }
+
+    .grid-block--title > h3 {
+        font-weight: 300;
+    }
+
+}
