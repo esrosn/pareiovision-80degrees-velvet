@@ -1,19 +1,17 @@
-name: Continuous Integration
-
-on: [pull_request]
-
+name: CI
+on: [push]
 jobs:
-  buildAndTest:
-    name: Build and Test
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
-      - name: Check Into Landing
-        run: cd isaac-lewis-80degrees && ls
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name:  Build production landing page
+      - run: cd isaac-lewis-80degrees && npm install && npm run-script build
+      - name: Deploy static ssite to S3 bucket
+        run: aws s3 sync ./isaac-lewis-80degrees/build/ s3://${{ WWW_LANDING_AWS_S3_BUCKET }} --delete
