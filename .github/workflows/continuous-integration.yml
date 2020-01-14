@@ -10,8 +10,8 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-      - name:  Build production landing page
-      - run: cd isaac-lewis-80degrees && npm install && npm run-script build
-      - name: Deploy static ssite to S3 bucket
-        run: aws s3 sync ./isaac-lewis-80degrees/build/ s3://${{ WWW_LANDING_AWS_S3_BUCKET }} --delete
+          aws-region: us-west-2
+      - name: Build static site
+      - run: yarn install && npm run-script build
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./dist/ s3://<your-website-bucket> --delete
