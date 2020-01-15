@@ -5,7 +5,7 @@ const HomePage = () => {
         <div className='flex flex-column justify-center items-center w-100'>
             <div className='flex flex-column justify-center vh-75 w-75'>
                 <div>
-                    <h2 className='f-headline-l f1'>Contact</h2>
+                    <h2 className='f-headline-l f1'>Contact Us</h2>
                 </div>
                 <div>
                     <div className='mb4 grid-container--content flex flex-column justify-between items-baseline'>
