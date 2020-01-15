@@ -13,9 +13,7 @@ const HomePage = () => {
             </figure>
             <div className='tc'>
                 <h3 className='f3-ns f6'>
-
-
-                    Listen to 80 Degrees / Velvet
+                    Listen to 80 Degrees / Velvet Here
                 </h3>
             </div>
         </a>
