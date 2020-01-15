@@ -16,6 +16,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
     - name: Deploy Landing to www subdomain
-      run: npm install && npm run build && aws s3 sync build/ s3://${{ secrets.WWW_LANDING_AWS_S3_BUCKET }} --delete
+      run: cd isaac-lewis-80degrees && npm install && npm run build && aws s3 sync build/ s3://${{ secrets.WWW_LANDING_AWS_S3_BUCKET }} --delete
     - name: Deploy Landing to domain
-      run: aws s3 sync build/ s3://${{ secrets.DOMAIN_LANDING_AWS_S3_BUCKET }} --delete
+      run: cd isaac-lewis-80degrees && aws s3 sync build/ s3://${{ secrets.DOMAIN_LANDING_AWS_S3_BUCKET }} --delete

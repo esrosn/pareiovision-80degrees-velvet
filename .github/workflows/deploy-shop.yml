@@ -15,6 +15,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy Shop to www subdomain
-        run: npm install && npm run build && aws s3 sync build/ s3://${{ secrets.WWW_SHOP_AWS_S3_BUCKET }} --delete
+        run: cd pareiovision-shopify && npm install && npm run build && aws s3 sync build/ s3://${{ secrets.WWW_SHOP_AWS_S3_BUCKET }} --delete
       - name: Deploy Shop to subdomain
-        run: aws s3 sync build/ s3://${{ secrets.DOMAIN_SHOP_AWS_S3_BUCKET }} --delete
+        run: cd pareiovision-shopify && aws s3 sync build/ s3://${{ secrets.DOMAIN_SHOP_AWS_S3_BUCKET }} --delete
