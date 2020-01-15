@@ -2,7 +2,7 @@ name: Pareiovision Landing Page Deployment
 on:
   push:
     paths:
-    - "isaac-lewis-80degrees/*"
+    - "./isaac-lewis-80degrees/*"
 
 jobs:
   build:
