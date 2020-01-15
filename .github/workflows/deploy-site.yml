@@ -1,4 +1,4 @@
-
+name: Pareiovision Landing Page Deployment
 on:
   push:
     paths:
