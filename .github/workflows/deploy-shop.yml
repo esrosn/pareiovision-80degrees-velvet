@@ -1,7 +1,8 @@
 name: Pareiovision Shop Deployment
 on:
   push:
-    paths: 'pareiovision-shopify/*'
+    paths:
+    - 'pareiovision-shopify/*'
       jobs:
         build:
           runs-on: ubuntu-latest

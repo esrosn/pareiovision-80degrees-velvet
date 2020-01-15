@@ -1,7 +1,8 @@
 name: Continuous Deployment
 on:
   push:
-    paths: 'isaac-lewis-80degrees/*'
+    paths:
+    - 'isaac-lewis-80degrees/*'
       jobs:
         build:
           runs-on: ubuntu-latest
