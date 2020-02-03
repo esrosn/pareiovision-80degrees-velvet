@@ -96,7 +96,7 @@ class Product extends Component {
 
         <button
           disabled
-          className='Product__buy button w-50 w-25-ns'
+          className='Product__buy button w-50 w-25-ns purple fw9'
           onClick={() =>
             this.props.addVariantToCart(variant.id, variantQuantity)
           }
