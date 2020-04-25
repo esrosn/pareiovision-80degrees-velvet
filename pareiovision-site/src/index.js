@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import './assets/styles/index.scss';
 import '../node_modules/tachyons/css/tachyons.min.css';
 import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
