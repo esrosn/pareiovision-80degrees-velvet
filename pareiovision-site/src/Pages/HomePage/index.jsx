@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Nav, Menu } from '../../Components';
+import { Nav, Menu, Home, Listen } from '../../Components';
 import { grainedService } from '../../utils';
-import Home from '../../Components/Home';
+
+import { Switch, Route } from 'react-router-dom';
 
 class HomePage extends Component {
   state = {
@@ -46,14 +47,17 @@ class HomePage extends Component {
     return (
       <div>
         {this.state.isMenuOpen && this.renderMenu()}
+        <Nav currentPage='home' toggleMenu={this.toggleMenu} />
         <div
           id='home'
-          className='absolute vh-100 top-0 w-100 o-90'
+          className='absolute top-0 left-0 vh-100 top-0 w-100 o-90'
           style={{ backgroundColor: '#efe8e0' }}
         >
-          <Home />
+          <Switch>
+            <Route path='/home/listen' component={Listen} />
+            <Route exact path='/home' component={Home} />
+          </Switch>
         </div>
-        <Nav currentPage='home' toggleMenu={this.toggleMenu} />
       </div>
     );
   }

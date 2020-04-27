@@ -17,7 +17,12 @@ const Menu = ({ toggleMenu }) => {
               </Link>
             </li>
             <li>
-              <Link className='link black hover-white pointer shop' to='#' />
+              <Link
+                className='link black hover-white pointer '
+                to='/home/listen'
+              >
+                LISTEN
+              </Link>
             </li>
             <li>
               <a
@@ -28,6 +33,9 @@ const Menu = ({ toggleMenu }) => {
               >
                 WATCH
               </a>
+            </li>
+            <li>
+              <Link className='link black hover-white  shop' to='#' />
             </li>
           </ul>
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { KEEPINGBUSYCOVER } from '../../constants';
 const Home = () => {
   return (
-    <main className='absolute w-100 vh-75 h-100-l flex justify-center items-center mt4'>
+    <main className='absolute top-0 left-0 w-100 vh-100 flex justify-center items-center '>
       <a
         className='link black'
         href='https://ditto.fm/keepingbusy'
@@ -14,7 +14,7 @@ const Home = () => {
             <img src={KEEPINGBUSYCOVER} alt='' className='w-50-ns w-100' />
           </div>
           <div className='flex justify-center items-center mt4 pa2'>
-            <div className='h-25 mh3'>Listen to Keeping Busy</div>
+            <div className='h-25 mh3 f3 fw7'>LISTEN TO KEEPING BUSY</div>
           </div>
         </section>
       </a>
