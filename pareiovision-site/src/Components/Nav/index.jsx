@@ -45,7 +45,7 @@ export default class Nav extends Component {
             <Link
               onMouseOver={this.handleMouseOver}
               onMouseOut={this.handleMouseOut}
-              to='/'
+              to='/home'
               className='link'
             >
               <div className='logo-image'>
@@ -87,8 +87,14 @@ export default class Nav extends Component {
                 </Link>
               </div>
             ) : (
-              <div id='menu-icon' className='f2 fw9 pointer menu-button h3 w3'>
-                <img src={icon} alt='' className='w-100' />
+              <div className='flex flex-row justify-content items-center'>
+                <p className='mr3'>MENU</p>
+                <div
+                  id='menu-icon'
+                  className='f2 fw9 pointer menu-button h3 w3'
+                >
+                  <img src={icon} alt='' className='w-100' />
+                </div>
               </div>
             )}
           </li>

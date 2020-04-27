@@ -17,8 +17,8 @@ export function getAlbums() {
     {
       link: 'https://open.spotify.com/album/0pTJVYHbSSR9X3IWHL0vzw',
       src: 'https://i.scdn.co/image/ab67616d00001e0208b2401163397cbdea1d385f',
-      alt: 'Love Games and Interludes Album Cover',
-      title: 'Love Games & Interludes',
+      alt: 'Pareidolia Cover',
+      title: 'Pareidolia',
       artists: ['Isaac Lewis'],
     },
     {
