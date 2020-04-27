@@ -1,14 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { LandingPage, HomePage } from './Pages';
 
 function App() {
   return (
     <Switch>
       <Route path='/home'>
-        <Home />
+        <HomePage />
       </Route>
       <Route path='/'>
-        <Landing />
+        <LandingPage />
       </Route>
     </Switch>
   );
