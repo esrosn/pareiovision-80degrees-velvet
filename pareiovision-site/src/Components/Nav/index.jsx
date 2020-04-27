@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import logoWhite from '../../assets/images/Pareiovision.png';
 import logoBlack from '../../assets/images/Pareiovision-blk.png';
 import icon from '../../assets/images/KeepingBusy_iconblack.png';
+
 export default class Nav extends Component {
-  state = {
-    isMenuOpen: false,
-  };
+  state = {};
 
   images = [];
 
@@ -37,25 +36,8 @@ export default class Nav extends Component {
     });
   };
 
-  toggleMenu = () => {
-    let isMenuOpen = !this.state.isMenuOpen;
-    this.setState({ isMenuOpen }, () => {
-      this.rotateIcon();
-    });
-  };
-
-  rotateIcon = () => {
-    const plus = document.querySelector('#menu-icon');
-
-    if (this.state.isMenuOpen) {
-      plus.classList.add('rotate');
-    } else {
-      plus.classList.remove('rotate');
-    }
-  };
-
   render() {
-    const { currentPage } = this.props;
+    const { currentPage, toggleMenu } = this.props;
     return (
       <nav className='w-100 z-2 absolute top-0 left-0'>
         <ul className='list pa0 mt4 mb0 mh4  flex flex-row justify-between items-center black f3  lh-copy fw7'>
@@ -94,7 +76,7 @@ export default class Nav extends Component {
               </div>
             </Link>
           </li>
-          <li onClick={this.toggleMenu}>
+          <li onClick={toggleMenu}>
             {currentPage === 'landing' ? (
               <div
                 id='menu-icon'

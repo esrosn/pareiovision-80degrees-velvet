@@ -121,7 +121,7 @@ export default {
     style.type = 'text/css';
     style.id = 'grained-animation-' + elementId;
     document.body.appendChild(style);
-    console.log(style);
+
     var rule = 'background-image: url(' + noise + ');';
     rule +=
       'position: absolute;content: "";height: 300%;width: 300%;left: -100%;top: -100%;';

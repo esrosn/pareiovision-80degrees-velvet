@@ -41,3 +41,13 @@ div.menu-button {
 .hover-busy:hover {
   color: #efe8e0;
 }
+.bg-busy {
+  background-color: #efe8e0;
+}
+.shop:before {
+  content: 'SHOP';
+}
+
+.shop:hover:before {
+  content: 'COMING SOON';
+}
