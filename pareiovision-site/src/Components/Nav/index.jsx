@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/images/Pareiovision.png';
-
+import logoWhite from '../../assets/images/Pareiovision.png';
+import logoBlack from '../../assets/images/Pareiovision-blk.png';
+import icon from '../../assets/images/KeepingBusy_iconblack.png';
 export default class Nav extends Component {
   state = {
     isMenuOpen: false,
   };
+
   images = [];
 
   handleMouseOver = () => {
@@ -56,7 +58,7 @@ export default class Nav extends Component {
     const { currentPage } = this.props;
     return (
       <nav className='w-100 z-2 absolute top-0 left-0'>
-        <ul className='list pa0 mt4 mb0 mh4  flex flex-row justify-between items-center white-80 f3  lh-copy fw7'>
+        <ul className='list pa0 mt4 mb0 mh4  flex flex-row justify-between items-center black f3  lh-copy fw7'>
           <li className='w-25-l w-50-m w-50'>
             <Link
               onMouseOver={this.handleMouseOver}
@@ -66,7 +68,7 @@ export default class Nav extends Component {
             >
               <div className='logo-image'>
                 <img
-                  src={logo}
+                  src={currentPage === 'landing' ? logoWhite : logoBlack}
                   className='w-50-ns w-100'
                   alt=''
                   ref={(ref) => {
@@ -74,7 +76,7 @@ export default class Nav extends Component {
                   }}
                 />
                 <img
-                  src={logo}
+                  src={currentPage === 'landing' ? logoWhite : logoBlack}
                   className='w-50-ns'
                   alt=''
                   ref={(ref) => {
@@ -82,7 +84,7 @@ export default class Nav extends Component {
                   }}
                 />
                 <img
-                  src={logo}
+                  src={currentPage === 'landing' ? logoWhite : logoBlack}
                   className='w-50-ns'
                   alt=''
                   ref={(ref) => {
@@ -98,13 +100,13 @@ export default class Nav extends Component {
                 id='menu-icon'
                 className='f3-ns f4 fw7 lh-copy pointer menu-button'
               >
-                <Link to='/home' className='link dim white hover-yellow'>
+                <Link to='/home' className='link dim white hover-busy'>
                   ENTER
                 </Link>
               </div>
             ) : (
-              <div id='menu-icon' className='f2 fw9 pointer menu-button'>
-                <span style={{ marginBottom: '1rem' }}>+</span>
+              <div id='menu-icon' className='f2 fw9 pointer menu-button h3 w3'>
+                <img src={icon} alt='' className='w-100' />
               </div>
             )}
           </li>

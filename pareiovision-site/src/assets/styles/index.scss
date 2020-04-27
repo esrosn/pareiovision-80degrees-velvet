@@ -13,7 +13,7 @@ code {
 }
 
 .rotate {
-  transform-origin: center center;
+  transform-origin: center;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -36,4 +36,8 @@ div.menu-button {
 
     transition: transform 0.5s, box-shadow 0.5s;
   }
+}
+
+.hover-busy:hover {
+  color: #efe8e0;
 }
