@@ -5,7 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  min-height: 100vh;
+  height: 100%;
+
+  background-image: url('https://zayland-assets.s3.amazonaws.com/images/blank_background.png');
+  background-position: center;
+  background-repeat: repeat;
 }
 
 code {
@@ -24,4 +29,17 @@ div.menu-button {
   display: block;
   transition: all 0.4s ease-in-out;
   line-height: 1.4;
+}
+
+.logo-image {
+  position: relative;
+  height: 5vh;
+  display: flex;
+
+  align-items: center;
+  img {
+    position: absolute;
+
+    transition: transform 0.5s, box-shadow 0.5s;
+  }
 }
