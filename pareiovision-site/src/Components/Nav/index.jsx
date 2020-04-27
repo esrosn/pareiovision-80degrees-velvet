@@ -8,8 +8,6 @@ export default class Nav extends Component {
   };
   images = [];
 
-  
-
   handleMouseOver = () => {
     this.images.forEach((image, idx) => {
       if (idx === 0) {
@@ -55,10 +53,11 @@ export default class Nav extends Component {
   };
 
   render() {
+    const { currentPage } = this.props;
     return (
-      <nav className='w-100 z-2'>
-        <ul className='list pa0 mt1 mb0 mh4 flex flex-row justify-between items-center-l white-80 f3  lh-copy fw7'>
-          <li className='w-25'>
+      <nav className='w-100 z-2 absolute top-0 left-0'>
+        <ul className='list pa0 mt4 mb0 mh4  flex flex-row justify-between items-center white-80 f3  lh-copy fw7'>
+          <li className='w-25-l w-50-m w-50'>
             <Link
               onMouseOver={this.handleMouseOver}
               onMouseOut={this.handleMouseOut}
@@ -68,7 +67,7 @@ export default class Nav extends Component {
               <div className='logo-image'>
                 <img
                   src={logo}
-                  className='w-50'
+                  className='w-50-ns w-100'
                   alt=''
                   ref={(ref) => {
                     this.images[0] = ref;
@@ -76,7 +75,7 @@ export default class Nav extends Component {
                 />
                 <img
                   src={logo}
-                  className='w-50'
+                  className='w-50-ns'
                   alt=''
                   ref={(ref) => {
                     this.images[1] = ref;
@@ -84,7 +83,7 @@ export default class Nav extends Component {
                 />
                 <img
                   src={logo}
-                  className='w-50'
+                  className='w-50-ns'
                   alt=''
                   ref={(ref) => {
                     this.images[2] = ref;
@@ -94,11 +93,20 @@ export default class Nav extends Component {
             </Link>
           </li>
           <li onClick={this.toggleMenu}>
-            <div id='menu-icon' className='f2 fw9 pointer menu-button'>
-              <span style={{ marginBottom: '1rem' }}>
-
-              </span>
-            </div>
+            {currentPage === 'landing' ? (
+              <div
+                id='menu-icon'
+                className='f3-ns f4 fw7 lh-copy pointer menu-button'
+              >
+                <Link to='/home' className='link dim white hover-yellow'>
+                  ENTER
+                </Link>
+              </div>
+            ) : (
+              <div id='menu-icon' className='f2 fw9 pointer menu-button'>
+                <span style={{ marginBottom: '1rem' }}>+</span>
+              </div>
+            )}
           </li>
         </ul>
       </nav>

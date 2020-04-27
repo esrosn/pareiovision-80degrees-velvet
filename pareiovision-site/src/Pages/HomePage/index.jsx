@@ -4,8 +4,8 @@ import { Nav } from '../../Components';
 const HomePage = () => {
   return (
     <div>
-      HomePage
-      <Nav />
+      <Nav currentPage='home' />
+      home page
     </div>
   );
 };
