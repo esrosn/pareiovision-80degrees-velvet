@@ -19,3 +19,5 @@ jobs:
         run: cd pareiovision-site && npm install && npm run build && aws s3 sync build/ s3://${{ secrets.WWW_LANDING_AWS_S3_BUCKET }} --delete
       - name: Deploy Landing to domain
         run: cd pareiovision-site && aws s3 sync build/ s3://${{ secrets.DOMAIN_LANDING_AWS_S3_BUCKET }} --delete
+      - name: Update Cache Control for index.html
+        run: aws s3 cp s3://${{ secrets.WWW_LANDING_AWS_S3_BUCKET }}/index.html s3://${{ secrets.WWW_LANDING_AWS_S3_BUCKET }}/index.html --metadata-directive REPLACE --cache-control no-cache
