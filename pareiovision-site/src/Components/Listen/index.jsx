@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAlbums, getArtistPlatforms } from '../../data';
+import { getAlbums } from '../../data';
 
 const albums = getAlbums();
 const Listen = () => {
