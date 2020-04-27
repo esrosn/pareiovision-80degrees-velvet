@@ -22,7 +22,7 @@ const Listen = () => {
                     className='w-100 db outline black-10'
                   />
                   <dl className='mt2 f6 lh-copy'>
-                    <dt className='clip'>Title</dt>
+                    <dt className='clip'>TitlE</dt>
                     <dd className='ml0 black f5 truncate w-100'>
                       {album.title}
                     </dd>
