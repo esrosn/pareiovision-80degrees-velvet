@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import Products from "./components/Products";
-import Cart from "./components/Cart";
-import logo from "../assets/Pareiovision.png";
+import React, { Component } from 'react';
+import Products from './components/Products';
+import Cart from './components/Cart';
+import logo from '../assets/Pareiovision-blk.png';
 
+import { grainedService } from './utils';
 class App extends Component {
   constructor() {
     super();
@@ -11,7 +12,7 @@ class App extends Component {
       isCartOpen: false,
       checkout: { lineItems: [] },
       products: [],
-      shop: {}
+      shop: {},
     };
 
     this.handleCartClose = this.handleCartClose.bind(this);
@@ -20,29 +21,42 @@ class App extends Component {
     this.removeLineItemInCart = this.removeLineItemInCart.bind(this);
   }
 
+  options = {
+    animate: true,
+    patternWidth: 485.5,
+    patternHeight: 485.5,
+    grainOpacity: 0.15,
+    grainDensity: 1,
+    grainWidth: 0.75,
+    grainHeight: 0.75,
+  };
+
+  componentDidMount() {
+    grainedService.grained('#grained', this.options);
+  }
   componentWillMount() {
-    this.props.client.checkout.create().then(res => {
+    this.props.client.checkout.create().then((res) => {
       this.setState({
-        checkout: res
+        checkout: res,
       });
     });
 
-    this.props.client.product.fetchAll().then(res => {
+    this.props.client.product.fetchAll().then((res) => {
       this.setState({
-        products: res
+        products: res,
       });
     });
 
-    this.props.client.shop.fetchInfo().then(res => {
+    this.props.client.shop.fetchInfo().then((res) => {
       this.setState({
-        shop: res
+        shop: res,
       });
     });
   }
 
   addVariantToCart(variantId, quantity) {
     this.setState({
-      isCartOpen: true
+      isCartOpen: true,
     });
 
     const lineItemsToAdd = [{ variantId, quantity: parseInt(quantity, 10) }];
@@ -50,9 +64,9 @@ class App extends Component {
 
     return this.props.client.checkout
       .addLineItems(checkoutId, lineItemsToAdd)
-      .then(res => {
+      .then((res) => {
         this.setState({
-          checkout: res
+          checkout: res,
         });
       });
   }
@@ -60,14 +74,14 @@ class App extends Component {
   updateQuantityInCart(lineItemId, quantity) {
     const checkoutId = this.state.checkout.id;
     const lineItemsToUpdate = [
-      { id: lineItemId, quantity: parseInt(quantity, 10) }
+      { id: lineItemId, quantity: parseInt(quantity, 10) },
     ];
 
     return this.props.client.checkout
       .updateLineItems(checkoutId, lineItemsToUpdate)
-      .then(res => {
+      .then((res) => {
         this.setState({
-          checkout: res
+          checkout: res,
         });
       });
   }
@@ -77,16 +91,16 @@ class App extends Component {
 
     return this.props.client.checkout
       .removeLineItems(checkoutId, [lineItemId])
-      .then(res => {
+      .then((res) => {
         this.setState({
-          checkout: res
+          checkout: res,
         });
       });
   }
 
   handleCartClose() {
     this.setState({
-      isCartOpen: false
+      isCartOpen: false,
     });
   }
   handleMouseOver = () => {
@@ -107,11 +121,11 @@ class App extends Component {
       if (idx === 0) {
         return;
       } else if (idx === 1) {
-        image.style.display = "";
-        image.style.transform = "";
+        image.style.display = '';
+        image.style.transform = '';
       } else {
-        image.style.display = "";
-        image.style.transform = "";
+        image.style.display = '';
+        image.style.transform = '';
       }
     });
   };
@@ -119,61 +133,63 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="w-100 flex-l flex-column-m justify-between ph4 pt4">
-          <div className="logo relative">
-            <a
-              onMouseOver={this.handleMouseOver}
-              onMouseOut={this.handleMouseOut}
-              href='http://www.pareiovision.com'
-              className="link dim logo-image mh4"
-            >
-              <img
-                src={logo}
-                alt=""
-                ref={ref => {
-                  this.images[0] = ref;
-                }}
-              />
-              <img
-                src={logo}
-                alt=""
-                ref={ref => {
-                  this.images[1] = ref;
-                }}
-              />
-              <img
-                src={logo}
-                alt=""
-                ref={ref => {
-                  this.images[2] = ref;
-                }}
-              />
-            </a>
-          </div>
-          {!this.state.isCartOpen && (
-            <div className="flex justify-center items-center mh4 mt4">
-              <button
-                className="App__view-cart"
-                onClick={() => this.setState({ isCartOpen: true })}
+      <div id='grained' className='vh-100 bg-busy'>
+        <div className='absolute h-100 w-100'>
+          <header className='w-100 flex-l flex-column-m justify-between ph4 pt4'>
+            <div className='logo relative'>
+              <a
+                onMouseOver={this.handleMouseOver}
+                onMouseOut={this.handleMouseOut}
+                href='http://www.pareiovision.com'
+                className='link dim logo-image mh4'
               >
-                Cart
-              </button>
+                <img
+                  src={logo}
+                  alt=''
+                  ref={(ref) => {
+                    this.images[0] = ref;
+                  }}
+                />
+                <img
+                  src={logo}
+                  alt=''
+                  ref={(ref) => {
+                    this.images[1] = ref;
+                  }}
+                />
+                <img
+                  src={logo}
+                  alt=''
+                  ref={(ref) => {
+                    this.images[2] = ref;
+                  }}
+                />
+              </a>
             </div>
-          )}
-        </header>
-        <Products
-          products={this.state.products}
-          client={this.props.client}
-          addVariantToCart={this.addVariantToCart}
-        />
-        <Cart
-          checkout={this.state.checkout}
-          isCartOpen={this.state.isCartOpen}
-          handleCartClose={this.handleCartClose}
-          updateQuantityInCart={this.updateQuantityInCart}
-          removeLineItemInCart={this.removeLineItemInCart}
-        />
+            {!this.state.isCartOpen && (
+              <div className='flex justify-center items-center mh4 mt4 '>
+                <button
+                  className='App__view-cart black fw7 tracked'
+                  onClick={() => this.setState({ isCartOpen: true })}
+                >
+                  CART
+                </button>
+              </div>
+            )}
+          </header>
+          <Products
+            products={this.state.products}
+            client={this.props.client}
+            addVariantToCart={this.addVariantToCart}
+          />
+          <Cart
+            checkout={this.state.checkout}
+            isCartOpen={this.state.isCartOpen}
+            handleCartClose={this.handleCartClose}
+            updateQuantityInCart={this.updateQuantityInCart}
+            removeLineItemInCart={this.removeLineItemInCart}
+          />
+        </div>
       </div>
     );
   }

@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class VariantSelector extends Component {
   render() {
     return (
       <select
-        className=" bg-black white b-white pl3 quantity"
+        className=' black bg-transparent pl3 quantity'
         name={this.props.option.name}
         key={this.props.option.name}
         onChange={this.props.handleOptionChange}
       >
-        {this.props.option.values.map(value => {
+        {this.props.option.values.map((value) => {
           return (
             <option
               value={value}

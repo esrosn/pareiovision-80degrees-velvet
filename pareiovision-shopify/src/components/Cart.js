@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
-import LineItem from './LineItem'
+import React, { Component } from 'react';
+import LineItem from './LineItem';
 
 class Cart extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.openCheckout = this.openCheckout.bind(this)
+    this.openCheckout = this.openCheckout.bind(this);
   }
 
   openCheckout() {
-    window.open(this.props.checkout.webUrl)
+    window.open(this.props.checkout.webUrl);
   }
 
   render() {
-    let line_items = this.props.checkout.lineItems.map(line_item => {
+    let line_items = this.props.checkout.lineItems.map((line_item) => {
       return (
         <LineItem
           updateQuantityInCart={this.props.updateQuantityInCart}
@@ -21,8 +21,8 @@ class Cart extends Component {
           key={line_item.id.toString()}
           line_item={line_item}
         />
-      )
-    })
+      );
+    });
 
     return (
       <div
@@ -66,16 +66,15 @@ class Cart extends Component {
           </div>
 
           <button
-            disabled
-            className='Cart__checkout button purple fw9'
+            className='Cart__checkout button black fw7'
             onClick={this.openCheckout}
           >
-            SOLD OUT
+            CHECKOUT
           </button>
         </footer>
       </div>
-    )
+    );
   }
 }
 
-export default Cart
+export default Cart;

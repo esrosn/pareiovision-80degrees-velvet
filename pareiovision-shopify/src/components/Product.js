@@ -1,91 +1,146 @@
-import React, { Component } from 'react'
-import VariantSelector from './VariantSelector'
+import React, { Component } from 'react';
+import VariantSelector from './VariantSelector';
 
 class Product extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    let defaultOptionValues = {}
-    this.props.product.options.forEach(selector => {
-      defaultOptionValues[selector.name] = selector.values[0].value
-    })
-    this.state = { selectedOptions: defaultOptionValues }
+    let defaultOptionValues = {};
+    this.props.product.options.forEach((selector) => {
+      defaultOptionValues[selector.name] = selector.values[0].value;
+    });
+    this.state = { selectedOptions: defaultOptionValues, currentImage: 0 };
 
-    this.handleOptionChange = this.handleOptionChange.bind(this)
-    this.handleQuantityChange = this.handleQuantityChange.bind(this)
-    this.findImage = this.findImage.bind(this)
+    this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.handleQuantityChange = this.handleQuantityChange.bind(this);
+    this.findImage = this.findImage.bind(this);
   }
-
+  handleImageNextClick = () => {
+    if (this.state.currentImage === 0) {
+      this.setState({ currentImage: this.state.currentImage + 1 });
+    } else {
+      return;
+    }
+  };
+  handleImagePrevClick = () => {
+    if (this.state.currentImage === 1) {
+      this.setState({ currentImage: this.state.currentImage - 1 });
+    } else {
+      return;
+    }
+  };
   findImage(images, variantId) {
-    const primary = images[0]
+    const primary = images[0];
 
-    const image = images.filter(function(image) {
-      return image.variant_ids.includes(variantId)
-    })[0]
+    const image = images.filter(function (image) {
+      return image.variant_ids.includes(variantId);
+    })[0];
 
-    return (image || primary).src
+    return (image || primary).src;
   }
 
   handleOptionChange(event) {
-    const target = event.target
-    let selectedOptions = this.state.selectedOptions
-    selectedOptions[target.name] = target.value
+    const target = event.target;
+    let selectedOptions = this.state.selectedOptions;
+    selectedOptions[target.name] = target.value;
 
     const selectedVariant = this.props.client.product.helpers.variantForOptions(
       this.props.product,
       selectedOptions
-    )
+    );
 
     this.setState({
       selectedVariant: selectedVariant,
-      selectedVariantImage: selectedVariant.attrs.image
-    })
+      selectedVariantImage: selectedVariant.attrs.image,
+    });
   }
 
   handleQuantityChange(event) {
     this.setState({
-      selectedVariantQuantity: event.target.value
-    })
+      selectedVariantQuantity: event.target.value,
+    });
   }
 
   render() {
-    let variantImage =
-      this.state.selectedVariantImage || this.props.product.images[0]
-    let variant = this.state.selectedVariant || this.props.product.variants[0]
-    let variantQuantity = this.state.selectedVariantQuantity || 1
-    let variantSelectors = this.props.product.options.map(option => {
+    let variantImages = this.props.product.images;
+    let variant = this.state.selectedVariant || this.props.product.variants[0];
+    let variantQuantity = this.state.selectedVariantQuantity || 1;
+
+    let variantSelectors = this.props.product.options.map((option) => {
       return (
         <div
           key={option.id.toString()}
-          className='flex flex-column justify-center items-center mb4 mh4 w-25'
+          className='flex flex-column justify-center-ns items-center-ns mb4 mh4 w-25'
         >
-          <label className='mb2 f3'>Size</label>
+          <label className='mb2 f5 f3-ns'>SIZE</label>
           <VariantSelector
             handleOptionChange={this.handleOptionChange}
             option={option}
           />
         </div>
-      )
-    })
+      );
+    });
+
     return (
       <div className='flex flex-column justify-between items-center'>
-        {this.props.product.images.length ? (
-          <div className='product-image w-75 w-25-l flex justify-center'>
-            <img
-              src={variantImage.src}
-              alt={`${this.props.product.title} product shot`}
-            />
+        <div className='flex flex-row-ns  w-100 mw9 items-center justify-center'>
+          <div className='pointer' onClick={this.handleImagePrevClick}>
+            <svg
+              viewBox='0 0 24 24'
+              width='30'
+              height='30'
+              stroke='currentColor'
+              strokeWidth='2'
+              fill='none'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              className='css-i6dzq1'
+            >
+              <polyline points='15 18 9 12 15 6'></polyline>
+            </svg>
           </div>
-        ) : null}
-        <h5 className='Product__title'>{this.props.product.title}</h5>
-        <span className='Product__price mb3'>${variant.price | 0}</span>
-        <div className='w-75 flex justify-center items-center'>
+          {this.props.product.images.length && (
+            <figure className='w-50-ns w-100 tc'>
+              <img
+                className='mw-100 db'
+                src={variantImages[this.state.currentImage].src}
+                alt={`${this.props.product.title} product shot`}
+              />
+            </figure>
+          )}
+          <div className='pointer fw7 f4' onClick={this.handleImageNextClick}>
+            <svg
+              viewBox='0 0 24 24'
+              width='30'
+              height='30'
+              stroke='currentColor'
+              strokeWidth='2'
+              fill='none'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              className='css-i6dzq1'
+            >
+              <polyline points='9 18 15 12 9 6'></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <h5 className='tc f3-ns f5 ttu tracked mb2'>
+          {this.props.product.title}
+        </h5>
+        <div
+          className='tc f3-ns f5 ttu tracked description'
+          dangerouslySetInnerHTML={{
+            __html: this.props.product.descriptionHtml,
+          }}
+        />
+        <div className='mt3 flex justify-center items-center'>
           {variantSelectors}
           <div className='flex flex-column justify-center items-center mb4 mh4 w-25'>
-            <label className='mb2 f3'>Qty</label>
+            <label className='mb2 f5 f3-ns'>QTY</label>
 
             <input
-              className=' bg-black white quantity'
+              className='bg-transparent black quantity'
               min='1'
               type='number'
               defaultValue={variantQuantity}
@@ -94,18 +149,18 @@ class Product extends Component {
           </div>
         </div>
 
+        <span className='tc f3 ttu tracked mb3'>${variant.price | 0}</span>
         <button
-          disabled
-          className='Product__buy button w-50 w-25-ns purple fw9'
+          className='f3 button w-50 w-25-ns black fw5'
           onClick={() =>
             this.props.addVariantToCart(variant.id, variantQuantity)
           }
         >
-          SOLD OUT
+          BUY
         </button>
       </div>
-    )
+    );
   }
 }
 
-export default Product
+export default Product;
