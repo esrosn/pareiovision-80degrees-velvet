@@ -11,3 +11,6 @@ export const imgURLs = [
 
 export const KEEPINGBUSYCOVER =
   'https://pareiovision-assets.s3.amazonaws.com/KEEPINGBUSYCOVER-min.png';
+
+export const CLAYMAN =
+  'https://pareiovision-assets.s3.amazonaws.com/clayman.png';

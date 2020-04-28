@@ -12,6 +12,17 @@ code {
     monospace;
 }
 
+.landingpage--container {
+  margin-top: 0;
+
+  height: 100vh;
+
+  background-image: url('https://pareiovision-assets.s3.amazonaws.com/clayman.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .rotate {
   transform-origin: center;
   transform: rotate(45deg);

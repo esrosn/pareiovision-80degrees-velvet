@@ -1,6 +1,7 @@
 name: Pareiovision Landing Page Deployment
 on:
-  push:
+  pull_request:
+    types: [closed]
     paths:
       - 'pareiovision-site/**'
 
