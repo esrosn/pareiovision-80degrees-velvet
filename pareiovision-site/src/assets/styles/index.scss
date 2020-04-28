@@ -55,16 +55,3 @@ div.menu-button {
 .bg-busy {
   background-color: #efe8e0;
 }
-.shop:before {
-  content: 'SHOP';
-}
-
-.shop:hover:before {
-  content: 'COMING SOON';
-}
-
-@media screen and (max-width: 768px) {
-  .shop:before {
-    content: 'SHOP SOON';
-  }
-}
