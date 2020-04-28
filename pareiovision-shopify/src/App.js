@@ -135,8 +135,8 @@ class App extends Component {
     return (
       <div id='grained' className='vh-100 bg-busy'>
         <div className='absolute h-100 w-100'>
-          <header className='w-100 flex-l flex-column-m justify-between ph4 pt4'>
-            <div className='logo relative'>
+          <header className='w-100 flex-l flex-column-m justify-between items-center ph2 pt2'>
+            <div className='logo'>
               <a
                 onMouseOver={this.handleMouseOver}
                 onMouseOut={this.handleMouseOut}
@@ -146,6 +146,7 @@ class App extends Component {
                 <img
                   src={logo}
                   alt=''
+                  className='w-50-ns w-100'
                   ref={(ref) => {
                     this.images[0] = ref;
                   }}
@@ -153,6 +154,7 @@ class App extends Component {
                 <img
                   src={logo}
                   alt=''
+                  className='w-50-ns w-100'
                   ref={(ref) => {
                     this.images[1] = ref;
                   }}
@@ -160,6 +162,7 @@ class App extends Component {
                 <img
                   src={logo}
                   alt=''
+                  className='w-50-ns w-100'
                   ref={(ref) => {
                     this.images[2] = ref;
                   }}
