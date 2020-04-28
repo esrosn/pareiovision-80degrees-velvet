@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Nav, ImageBackground } from '../../Components';
+import { Nav } from '../../Components';
 
 const LandingPage = () => {
   return (
