@@ -36,7 +36,7 @@ const Menu = ({ toggleMenu }) => {
             </li>
             <li>
               <a
-                className='link black hover-white'
+                className='link black hover-white pointer'
                 href='https://shop.pareiovision.com'
                 rel='noopener noreferrer'
                 target='_blank'
