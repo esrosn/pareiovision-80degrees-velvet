@@ -18,3 +18,5 @@ jobs:
         run: cd pareiovision-shopify && npm install && npm run build && aws s3 sync build/ s3://${{ secrets.WWW_SHOP_AWS_S3_BUCKET }} --delete
       - name: Deploy Shop to subdomain
         run: cd pareiovision-shopify && aws s3 sync build/ s3://${{ secrets.DOMAIN_SHOP_AWS_S3_BUCKET }} --delete
+      - name: Update Cache Control for index.html
+        run: aws s3 cp s3://${{ secrets.DOMAIN_SHOP_AWS_S3_BUCKET  }}/index.html s3://${{ secrets.DOMAIN_SHOP_AWS_S3_BUCKET }}/index.html --metadata-directive REPLACE --cache-control no-cache

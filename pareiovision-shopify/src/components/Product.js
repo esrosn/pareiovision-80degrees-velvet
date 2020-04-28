@@ -70,7 +70,7 @@ class Product extends Component {
       return (
         <div
           key={option.id.toString()}
-          className='flex flex-column justify-center-ns items-center-ns mb4 mh4 w-25'
+          className='flex flex-column justify-center-ns items-center-ns  mh4 w-25'
         >
           <label className='mb2 f5 f3-ns'>SIZE</label>
           <VariantSelector
@@ -83,7 +83,7 @@ class Product extends Component {
 
     return (
       <div className='flex flex-column justify-between items-center'>
-        <div className='flex flex-row-ns  w-100 mw9 items-center justify-center'>
+        <div className='flex flex-row-ns  w-100 mw8 items-center justify-around'>
           <div className='pointer' onClick={this.handleImagePrevClick}>
             <svg
               viewBox='0 0 24 24'
@@ -108,7 +108,7 @@ class Product extends Component {
               />
             </figure>
           )}
-          <div className='pointer fw7 f4' onClick={this.handleImageNextClick}>
+          <div className='pointer mr4' onClick={this.handleImageNextClick}>
             <svg
               viewBox='0 0 24 24'
               width='30'
@@ -128,15 +128,16 @@ class Product extends Component {
         <h5 className='tc f3-ns f5 ttu tracked mb2'>
           {this.props.product.title}
         </h5>
+        <span className='tc f3 ttu tracked mb3'>${variant.price | 0}</span>
         <div
-          className='tc f3-ns f5 ttu tracked description'
+          className='tc f3-ns f5 ttu tracked description w-25-l w-50-m w-100 lh-copy'
           dangerouslySetInnerHTML={{
             __html: this.props.product.descriptionHtml,
           }}
         />
         <div className='mt3 flex justify-center items-center'>
           {variantSelectors}
-          <div className='flex flex-column justify-center items-center mb4 mh4 w-25'>
+          <div className='flex flex-column justify-center items-center mh4 w-25-ns'>
             <label className='mb2 f5 f3-ns'>QTY</label>
 
             <input
@@ -149,9 +150,8 @@ class Product extends Component {
           </div>
         </div>
 
-        <span className='tc f3 ttu tracked mb3'>${variant.price | 0}</span>
         <button
-          className='f3 button w-50 w-25-ns black fw5'
+          className='f2 button w-50 w-25-ns black fw5'
           onClick={() =>
             this.props.addVariantToCart(variant.id, variantQuantity)
           }
