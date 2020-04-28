@@ -26,7 +26,7 @@ class Cart extends Component {
 
     return (
       <div
-        className={`Cart w-100 w-25-ns ${
+        className={`Cart bl b--black w-100 w-25-ns ${
           this.props.isCartOpen ? 'Cart--open' : ''
         }`}
       >
