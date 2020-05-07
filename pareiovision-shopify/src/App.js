@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Products from './components/Products';
-import Cart from './components/Cart';
+// import Products from './components/Products';
+// import Cart from './components/Cart';
 import logo from '../assets/Pareiovision-blk.png';
 
 class App extends Component {
@@ -112,6 +112,7 @@ class App extends Component {
           {!this.state.isCartOpen && (
             <div className='flex justify-center items-center mh4-l mt4-l mt2 '>
               <button
+                disabled
                 className='App__view-cart black f3 fw7 tracked'
                 onClick={() => this.setState({ isCartOpen: true })}
               >
@@ -120,7 +121,20 @@ class App extends Component {
             </div>
           )}
         </header>
-        <Products
+        <div className='vh-75 flex flex-column justify-center items-center'>
+          <h1 className='f3 fw5'>STORE CLOSED</h1>
+          <h2 className='f1 fw7'>
+            <a
+              rel='noopener noreferrer'
+              target='_blank'
+              className='link hover-dark-blue'
+              href='https://ditto.fm/keepingbusy'
+            >
+              LISTEN TO KEEPING BUSY
+            </a>
+          </h2>
+        </div>
+        {/* <Products
           products={this.state.products}
           client={this.props.client}
           addVariantToCart={this.addVariantToCart}
@@ -131,7 +145,7 @@ class App extends Component {
           handleCartClose={this.handleCartClose}
           updateQuantityInCart={this.updateQuantityInCart}
           removeLineItemInCart={this.removeLineItemInCart}
-        />
+        /> */}
       </div>
     );
   }
